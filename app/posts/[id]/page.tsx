@@ -1,7 +1,7 @@
 import { getPostByID } from "../../lib/api";
 type Props = {
   params: {
-    id: number;
+    id: string;
   };
 };
 
