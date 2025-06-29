@@ -1,22 +1,16 @@
-import { getPostByID, getAllPosts } from "@/app/lib/api";
-import { Post } from "@/app/types/type";
+import { getPostByID } from "@/app/lib/api";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post: Post) => ({
-    id: post.id.toString(),
-  }));
-}
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-export default async function PostDetailsPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const post = await getPostByID(params.id);
+export default async function PostDetailsPage({ params }: Props) {
+  const post = await getPostByID(Number(params.id));
 
-  if (!post) notFound(); 
+  if (!post) notFound();
 
   return (
     <div className="flex mx-auto items-center justify-center h-lvh">
@@ -28,11 +22,9 @@ export default async function PostDetailsPage({
         <h5 className="mb-2 text-md font-semibold text-gray-900 dark:text-white">
           {post.title}
         </h5>
-        <div className="flex items-center justify-center">
-          <p className="font-normal text-gray-700 dark:text-gray-400">
-            {post.body}
-          </p>
-        </div>
+        <p className="text-gray-700 dark:text-gray-400 text-center">
+          {post.body}
+        </p>
       </div>
     </div>
   );
