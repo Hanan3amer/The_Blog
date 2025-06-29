@@ -1,13 +1,11 @@
 import { getPostByID } from "../../lib/api";
 import { Post } from "../../types/type";
 
-type PostDetailsPageProps = {
-  params: { id: string };
-};
-
 export default async function PostDetailsPage({
   params,
-}: PostDetailsPageProps) {
+}: {
+  params: { id: string };
+}) {
   const post: Post = await getPostByID(params.id);
 
   return (
