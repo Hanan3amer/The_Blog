@@ -4,7 +4,7 @@ export async function getAllPosts() {
   return data.json();
 }
 
-export async function getPostByID(id: string) {
+export async function getPostByID(id: number) {
   const data = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   if (!data.ok) {
     notFound();
