@@ -1,11 +1,11 @@
-import { getPostByID, getAllPosts } from "../../lib/api";
+import { getPostByID } from "../../lib/api";
 import { Post } from "../../types/type";
 
-export default async function PostDetailsPage({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
+}
+
+export default async function PostDetailsPage({ params }: PageProps) {
   const post: Post = await getPostByID(params.id);
 
   return (
@@ -27,11 +27,4 @@ export default async function PostDetailsPage({
       </div>
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post: { id: number }) => ({
-    id: post.id.toString(),
-  }));
 }
