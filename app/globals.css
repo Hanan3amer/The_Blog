@@ -1,26 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Sevillana&display=swap");
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sevillana: "Sevillana", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(250, 235, 215, 0.178);
+}
+.dark body {
+  background-color: #0b0c14f6;
+}
+nav,
+h2 {
+  font-family: var(--font-sevillana);
+}
+.container {
+  width: 90%;
+  margin-inline: auto;
+}
+
+.loader {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: #75c6ec3c;
+  left: -100px;
+  box-sizing: border-box;
+  animation: shadowRolling 2s linear infinite;
+}
+
+@keyframes shadowRolling {
+  0% {
+    box-shadow: 0px 0 #75c6ec3c, 0px 0 #75c6ec3c, 0px 0 #75c6ec3c,
+      0px 0 #75c6ec3c;
+  }
+  12% {
+    box-shadow: 100px 0 #65818ee3, 0px 0 #75c6ec3c, 0px 0 #75c6ec3c,
+      0px 0 #75c6ec3c;
+  }
+  25% {
+    box-shadow: 110px 0 #4e626b, 100px 0 #3f525b, 0px 0 #75c6ec3c,
+      0px 0 #75c6ec3c;
+  }
+  36% {
+    box-shadow: 120px 0 #485860, 110px 0 #303a3f, 100px 0 #3b4f58,
+      0px 0 #75c6ec3c;
+  }
+  50% {
+    box-shadow: 130px 0 #435e6a, 120px 0 #45555c, 110px 0 #40555f,
+      100px 0 #40545e;
+  }
+  62% {
+    box-shadow: 200px 0 #75c6ec3c, 130px 0 #75c6ec, 120px 0 #75c6ec,
+      110px 0 #75c6ec;
+  }
+  75% {
+    box-shadow: 200px 0 #75c6ec3c, 200px 0 #75c6ec3c, 130px 0 #75c6ec,
+      120px 0 #75c6ec;
+  }
+  87% {
+    box-shadow: 200px 0 #75c6ec3c, 200px 0 #75c6ec3c, 200px 0 #75c6ec3c,
+      130px 0 #75c6ec;
+  }
+  100% {
+    box-shadow: 200px 0 #75c6ec3c, 200px 0 #75c6ec3c, 200px 0 #75c6ec3c,
+      200px 0 #75c6ec9f;
+  }
 }
