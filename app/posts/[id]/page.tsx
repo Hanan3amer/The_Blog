@@ -1,11 +1,10 @@
-import { getPostByID } from "../../lib/api";
-import { Post } from "../../types/type";
-
-interface PageProps {
+import { getPostByID } from "@/app/lib/api";
+import { Post } from "@/app/types/type";
+export default async function PostDetailsPage({
+  params,
+}: {
   params: { id: string };
-}
-
-export default async function PostDetailsPage({ params }: PageProps) {
+}) {
   const post: Post = await getPostByID(params.id);
 
   return (
